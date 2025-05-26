@@ -174,7 +174,7 @@
 
   <main class="game-layout">
     <aside class="sidebar left">
-      {% assign shuffled_games = site.games | where_exp: "game", "game.url != page.url" | sample: 5 %}
+      {% assign shuffled_games = site.games | where_exp: "game", "game.url != page.url" | sample: 10 %}
       {% for game in shuffled_games %}
         <a href="{{ game.url | relative_url }}" title="{{ game.title }}">
           <img src="{{ game.image }}" alt="{{ game.title }}">
@@ -195,7 +195,7 @@
     </section>
 
     <aside class="sidebar right">
-      {% assign shuffled_games = site.games | where_exp: "game", "game.url != page.url" | sample: 5 %}
+      {% assign shuffled_games = site.games | where_exp: "game", "game.url != page.url" | sample: 10 %}
       {% for game in shuffled_games %}
         <a href="{{ game.url | relative_url }}" title="{{ game.title }}">
           <img src="{{ game.image }}" alt="{{ game.title }}">
