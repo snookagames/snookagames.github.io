@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ page.title }} | SnookaGames</title>
+  <title>{{ page.title }} by {{ page.author }} | SnookaGames</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ page.description | escape }}">
   <link rel="icon" href="/assets/favicon.png">
@@ -26,6 +26,10 @@
   <meta name="twitter:description" content="{{ page.description }}">
   <meta name="twitter:image" content="{{ page.image }}">
   <meta name="twitter:creator" content="@SnookaGames">
+
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "5f441a3804af4f86a81144ba91931cc1"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 
   <link rel="icon" href="/assets/favicon.png">
   <style>
@@ -180,14 +184,12 @@
 
     <section class="game-content">
         <div class="iframe-wrapper">
-          <iframe src="{{ page.embed }}" allowfullscreen></iframe>
+          <!-- <iframe src="{{ page.embed }}" allowfullscreen></iframe> -->
+          <iframe src="/embed.html?title={{ page.title }}&description={{ page.description }}&author={{ page.author }}&embed={{ page.embed }}" allowfullscreen></iframe>
         </div>
         <div class="game-footer">
           <img src="{{ page.image }}" alt="{{ page.title }}">
-            <div class="title">{{ page.title }}</div>
-            <div class="credit" style="font-size:0.95em;color:#888;margin-top:2px;">
-              by {{ page.author }} • {{ page.description }}
-            </div>
+            <div class="title">{{ page.title }} <div class="credit" style="font-size:0.95em;color:#888;margin-top:2px;">by {{ page.author }} • {{ page.description }}</div></div>
           <div class="fullscreen-icon" onclick="toggleFullScreen()">⛶</div>
         </div>
     </section>

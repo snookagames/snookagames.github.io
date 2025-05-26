@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SnookaGames</title>
+    <script>
+        const p = new URLSearchParams(window.location.search);
+        if (!p.has("embed") || !p.has("title") || !p.has("author") || !p.has("description")) window.location.href = "/";
+        setInterval(() => {
+            document.querySelector('h1').textContent = p.get('title')
+            document.querySelector('.description').textContent = `This game was created by ${p.get('author')}. ${p.get('description')}`;
+        }, 10);
+
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('fade-in');
+        });
+    </script>
+    <style>
+        @keyframes fade {
+            0% {
+            opacity: 0;
+            transform: scale3d(0.7, 0.7, 0.7) rotateY(-90deg);
+            }
+            100% {
+            opacity: 1;
+            transform: scale3d(1, 1, 1) rotateY(0deg);
+            }
+        }
+
+        body {
+            animation: fade 3s ease;
+            background: #be7200; /* Darker orange */
+            font-family: 'Arial Rounded MT Bold', 'Comic Sans MS', sans-serif;
+            color: #ffa726;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 40px;
+        }
+        .content {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        h1 {
+            color: white;
+            font-size: 3em;
+            margin-bottom: 0.3em;
+            letter-spacing: 2px;
+            text-shadow: 2px 4px 16px rgba(0,0,0,0.25), 0 2px 0 #fff3e0;
+        }
+        .description {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 2em;
+            text-shadow: 1px 2px 8px rgba(0,0,0,0.15);
+        }
+        .play-btn {
+            background: #ffa726;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 16px 48px;
+            font-size: 1.3em;
+            font-family: inherit;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(255,167,38,0.2);
+            text-shadow: 1px 2px 8px rgba(0,0,0,0.18);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .play-btn:hover {
+            background: #ff9800;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .logo {
+            width: 220px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-image: url('assets/favicon.png');
+            background-size: 140px 140px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        /* Responsive */
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                gap: 24px;
+                width: 600px;
+            }
+            .logo {
+                margin-top: 16px;
+                width: 260px;
+                height: 260px;
+                background: orange;
+                background-image: url('/assets/favicon.svg');
+                background-size: 140px 140px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>SnookaGames</h1>
+            <div class="description">
+                Welcome to SnookaGames! Dive into a world of fun and challenging games designed for everyone. Get ready to play and enjoy endless entertainment!
+            </div>
+            <button class="play-btn" onclick="window.location.href=p.get('embed')">Play</button>
+        </div>
+        <div class="logo">
+            <!-- Logo image is set via CSS background-image -->
+        </div>
+    </div>
+</body>
+</html>
