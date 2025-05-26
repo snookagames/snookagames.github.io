@@ -1,65 +1,75 @@
 ---
 layout: default
-title: SnookaGames
-description: The best site to have fun anywhere online
+title: SnookaGames - Play Free Online Games
+description: Play free online games at SnookaGames. Browse and enjoy a huge collection of fun games.
 ---
 
+<section class="game-grid">
+  {% for game in site.games %}
+    <a href="{{ game.url | relative_url }}" class="game-card" title="{{ game.title }}">
+      <img src="{{ game.image }}" alt="{{ game.title }}">
+      <div class="game-title">{{ game.title }}</div>
+    </a>
+  {% endfor %}
+</section>
+
 <style>
+  /* Game grid container */
   .game-grid {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 15px;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    gap: 1.5rem;
-    padding: 1rem 0;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 20px;
   }
+
+  /* Each game card */
   .game-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-    text-align: center;
-    padding: 1rem;
-    transition: transform 0.2s ease;
+    position: relative;
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+
   .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgb(0 0 0 / 0.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
   }
-  .game-thumb {
+
+  /* Game cover image */
+  .game-card img {
     width: 100%;
-    max-width: 160px;
-    border-radius: 12px;
-    margin-bottom: 0.75rem;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 16px;
+    display: block;
   }
+
+  /* Title overlay - initially hidden */
   .game-title {
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin: 0.25rem 0;
-  }
-  .play-button {
-    background-color: #4CAF50;
-    border: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.6);
     color: white;
-    padding: 8px 16px;
-    border-radius: 24px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 8px 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 0 0 16px 16px;
+    pointer-events: none;
   }
-  .play-button:hover {
-    background-color: #388E3C;
+
+  /* Show title on hover */
+  .game-card:hover .game-title {
+    opacity: 1;
   }
 </style>
-
-<h1>Welcome to SnookaGames</h1>
-<p>Choose a game to play!</p>
-
-<div class="game-grid">
-  {% for game in site.games %}
-  <div class="game-card">
-    <img src="{{ game.image }}" alt="{{ game.title }}" class="game-thumb" />
-    <div class="game-title">{{ game.title }}</div>
-    <a href="{{ game.url }}" class="play-button">Play Now ▶</a>
-  </div>
-  {% endfor %}
-</div>

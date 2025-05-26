@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | SnookaGames</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Your meta tags here -->
+
+  <link rel="icon" href="/assets/favicon.png">
+  <!-- SEO -->
+  <meta name="author" content="{{ page.author | escape }}">
+  <meta name="keywords" content="games, SnookaGames, {{ page.title | escape }}, online game, free game">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ page.title | escape }} | SnookaGames">
+  <meta property="og:description" content="{{ page.description | escape }}">
+  <meta property="og:image" content="{{ page.image | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="SnookaGames">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title }} | SnookaGames">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="{{ page.image | escape }}">
+  <meta name="twitter:creator" content="@SnookaGames">
+</head>
+<body>
+  {% include navbar.html %}
+
+  <main>
+    {{ content }}
+  </main>
+</body>
+</html>

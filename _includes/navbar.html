@@ -1,0 +1,56 @@
+<header>
+  <div class="brand"><a href="/">SnookaGames</a></div>
+  <div class="search-bar">
+    <form action="/search">
+      <input name="query" type="text" placeholder="Search for a game...">
+    </form>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: #ffa726;
+    padding: 15px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .brand {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 0 #ffcc80;
+  }
+
+  .brand a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .search-bar {
+    flex: none;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+  }
+
+  @media(min-width: 600px) {
+    .search-bar {
+      margin-top: 0;
+      margin-left: 30px;
+      flex: 1;
+    }
+  }
+
+  .search-bar input {
+    width: 100%;
+    padding: 8px 14px;
+    border-radius: 20px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+  }
+</style>
