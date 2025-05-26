@@ -183,7 +183,10 @@
         </div>
         <div class="game-footer">
           <img src="{{ page.image }}" alt="{{ page.title }}">
-          <div class="title">{{ page.title }}</div>
+            <div class="title">{{ page.title }}</div>
+            <div class="credit" style="font-size:0.95em;color:#888;margin-top:2px;">
+              by {{ page.author }} • {{ page.description }}
+            </div>
           <div class="fullscreen-icon" onclick="toggleFullScreen()">⛶</div>
         </div>
     </section>
