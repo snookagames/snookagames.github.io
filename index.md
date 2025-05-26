@@ -4,6 +4,47 @@ title: SnookaGames - Play Free Online Games
 description: Play free online games at SnookaGames. Browse and enjoy a huge collection of fun games.
 ---
 
+<script>
+  const p = new URLSearchParams(window.location.search);
+  let g = [];
+  {% for game in site.games %}
+    g.push({ 
+      title: "{{ game.title | escape }}", 
+      url: "{{ game.url | relative_url }}", 
+      image: "{{ game.image | escape }}" 
+    });
+  {% endfor %}
+  setTimeout(() => {
+    if (p.has("query")) {
+      document.querySelector("#s").textContent = `Searching for: ${p.get("query")}`;
+      const q = p.get("query").toLowerCase();
+      const filtered = g.filter(game => game.title.toLowerCase().includes(q));
+      const grid = document.querySelector(".game-grid");
+      grid.innerHTML = "";
+      if (filtered.length === 0) {
+        grid.innerHTML = "<p>No games found.</p>";
+      } else {
+        filtered.forEach(game => {
+          const a = document.createElement("a");
+          a.href = game.url;
+          a.className = "game-card";
+          a.title = game.title;
+          a.innerHTML = `
+            <img src="${game.image}" alt="${game.title}">
+            <div class="game-title">${game.title}</div>
+          `;
+          grid.appendChild(a);
+        });
+      }
+      document.querySelector("#s").style.display = "block";
+    }
+  }, 500);
+</script>
+
+<p id="s" style="display: none;"></p>
+
+<p><span style="color: #ffa726;">{{ site.games | size }}</span> games and counting!</p>
+
 <section class="game-grid">
   {% for game in site.games %}
     <a href="{{ game.url | relative_url }}" class="game-card" title="{{ game.title }}">
