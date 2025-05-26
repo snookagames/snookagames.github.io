@@ -1,0 +1,10 @@
+title: SnookaGames
+description: The best site to have fun anywhere online
+baseurl: ""
+url: "https://snookagames.github.io"
+theme: minima
+
+collections:
+  games:
+    output: true
+    permalink: /games/:name/
