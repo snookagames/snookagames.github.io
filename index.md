@@ -43,7 +43,7 @@ description: Play free online games at SnookaGames. Browse and enjoy a huge coll
 
 <p id="s" style="display: none;"></p>
 
-<p><span style="color: #ffa726;">{{ site.games | size }}</span> games and counting!</p>
+<p style="width:100%;text-align:center;"><span style="color: #ffa726;">{{ site.games | size }}</span> games and counting!</p>
 
 <section class="game-grid">
   {% for game in site.games %}
