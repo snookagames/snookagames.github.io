@@ -1,5 +1,5 @@
 let script = document.createElement("script");
-script.src = "https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.2/particles.min.js";
+script.src = "https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js";
 document.body.appendChild(script);
 
 setTimeout(() => {
