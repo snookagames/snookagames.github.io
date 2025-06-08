@@ -171,8 +171,9 @@
 </head>
 <body>
   {% include navbar.html %}
+<script src="/bgeffect.js"></script>
 
-  <main class="game-layout">
+  <main class="game-layout" id="body">
     <aside class="sidebar left">
       {% assign shuffled_games = site.games | where_exp: "game", "game.url != page.url" | sample: 10 %}
       {% for game in shuffled_games %}
